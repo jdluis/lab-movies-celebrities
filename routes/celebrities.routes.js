@@ -2,6 +2,20 @@ const router = require("express").Router();
 
 const Celebrity = require("../models/Celebrity.model.js");
 
+// GET "celebrities/"
+router.get("/",  async (req, res, next) => {
+  try{
+    const celebrities = await Celebrity.find()
+
+    res.render("celebrities/celebrities.hbs", {
+      allCelebrities: celebrities
+    })
+  } catch(err){
+    next(err)
+  }
+  
+})
+
 // GET "celebrities/create"
 router.get("/create", (req, res, next) => {
   res.render("celebrities/new-celebrity.hbs");
@@ -20,5 +34,8 @@ router.post("/create", async (req, res, next) => {
     next(err);
   }
 });
+
+
+
 
 module.exports = router;

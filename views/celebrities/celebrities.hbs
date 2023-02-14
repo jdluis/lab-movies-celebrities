@@ -1,3 +1,8 @@
 <div>
-    <h1>List of celebrities</h1>
+  <h2>List of celebrities</h2>
+  <ul>
+    {{#each this.allCelebrities}}
+      <li>{{this.name}}</li>
+    {{/each}}
+  </ul>
 </div>
