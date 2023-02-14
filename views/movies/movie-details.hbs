@@ -1,21 +1,20 @@
 <div>
   <h1>details movie</h1>
-
   <div>
-    
-      
-        <h4>Title: {{this.movie.title}}</h4>
-        <p>Genero: {{this.movie.genre}}</p>
-        <p>Resumen: {{this.movie.plot}}</p>
+    <h4>Title: {{this.movie.title}}</h4>
+    <p>Genero: {{this.movie.genre}}</p>
+    <p>Resumen: {{this.movie.plot}}</p>
+    <div>
+      {{#each this.movie.cast}}
         <div>
-          {{#each this.movie.cast}}
-            <div>
-            <p>{{this.name}}, {{this.occupation}}</p>
-            <p>{{this.catchPhrase}}</p>
-            </div>
-            <br>
-          {{/each}}
+          <p>{{this.name}}, {{this.occupation}}</p>
+          <p>{{this.catchPhrase}}</p>
         </div>
-    
+        <br />
+      {{/each}}
+    </div>
+    <form action="" method="post">
+      <button>Delete</button>
+    </form>
   </div>
 </div>

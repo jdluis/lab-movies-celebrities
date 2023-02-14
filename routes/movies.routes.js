@@ -7,8 +7,8 @@ const Celebrity = require("../models/Celebrity.model.js");
 
 router.get("/", async (req, res, next) => {
   try {
-    const movies = await Movie.find().populate("cast")
-    console.log(movies)
+    const movies = await Movie.find().populate("cast");
+    console.log(movies);
     res.render("movies/movies.hbs", {
       movies: movies,
     });
@@ -50,18 +50,28 @@ router.post("/create", async (req, res, next) => {
 // GET "movies/:id"
 
 router.get("/:id", async (req, res, next) => {
-    
-  try{
-    const { id } = req.params
-    const movie = await Movie.findById(id).populate("cast") 
-    console.log(movie)
+  try {
+    const { id } = req.params;
+    const movie = await Movie.findById(id).populate("cast");
+    console.log(movie);
     res.render("movies/movie-details.hbs", {
-        movie: movie
-    })
+      movie: movie,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 
-  } catch(err){
-    next(err)
-  } 
+//POST "movies/:id"
 
-})
+router.post("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await Movie.findByIdAndDelete(id);
+    res.redirect("/movies");
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
