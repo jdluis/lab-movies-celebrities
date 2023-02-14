@@ -13,9 +13,6 @@
       {{#each celebrities}}
         <option value="{{this._id}}">{{this.name}}</option>
       {{/each}}
-    </select>
-
-    <select disabled multiple name="cast">
       {{#each movie.cast}}
         <option selected value="{{this._id}}">{{this.name}}</option>
       {{/each}}

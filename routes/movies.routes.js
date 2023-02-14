@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 const Movie = require("../models/Movie.model.js");
 const Celebrity = require("../models/Celebrity.model.js");
+const compareTwoArraysName = require("../utils/compareTwoArraysName.js");
 
 //GET "movies"
 
@@ -78,36 +79,46 @@ router.post("/:id", async (req, res, next) => {
 router.get("/:id/edit", async (req, res, next) => {
   try {
     const movieId = req.params.id;
-    const movie = await Movie.findById(movieId).populate("cast")
+    const movie = await Movie.findById(movieId).populate("cast");
     const celebrities = await Celebrity.find();
-    console.log("--------------------------------");
-    console.log(celebrities);
-    console.log("--------------------------------");
+
+    /* const celebritisNoSelected = [];
+
+    for (let i = 0; movie.cast.length > i; i++) {
+      celebrities.forEach((celebrity) => {
+          if (celebrity.name !== movie.cast[i].name) {
+            celebritisNoSelected.push(celebrity);
+        }
+      });
+    } */
+
+    const celebritisNoSelected = compareTwoArraysName(movie.cast, celebrities);
+    console.log(celebritisNoSelected)
     res.render("movies/edit-movie.hbs", {
       movie: movie,
-      celebrities: celebrities
-    })
+      celebrities: celebritisNoSelected,
+    });
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
 
 //POST "movies/:id/edit"
 router.post("/:id/edit", async (req, res, next) => {
   try {
     const movieId = req.params.id;
-    const {title, genre, plot, cast } = req.body;
+    const { title, genre, plot, cast } = req.body;
     await Movie.findByIdAndUpdate(movieId, {
       title: title,
       genre: genre,
       plot: plot,
-      cast: cast
-    })
+      cast: cast,
+    });
 
-    res.redirect(`/movies/${movieId}`)
+    res.redirect(`/movies/${movieId}`);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
 
 module.exports = router;
