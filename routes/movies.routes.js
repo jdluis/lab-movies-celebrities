@@ -92,11 +92,11 @@ router.get("/:id/edit", async (req, res, next) => {
       });
     } */
 
-    const celebritisNoSelected = compareTwoArraysName(movie.cast, celebrities);
-    console.log(celebritisNoSelected)
+/*     const celebritisNoSelected = compareTwoArraysName(movie.cast, celebrities);
+ */  /*   console.log(celebritisNoSelected) */
     res.render("movies/edit-movie.hbs", {
       movie: movie,
-      celebrities: celebritisNoSelected,
+      celebrities: celebrities,
     });
   } catch (err) {
     next(err);
