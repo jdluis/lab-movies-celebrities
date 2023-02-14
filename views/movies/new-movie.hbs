@@ -1,21 +1,28 @@
-<div>
-    <h1>create movie</h1>
-    <form action="/movies/create" method="post">
-        <label for="title">Titulo:</label>
-        <input type="text" name="title">
-        <br>
-        <label for="genre">Genero:</label>
-        <input type="text" name="genre">
-        <br>
-        <label for="plot">Trama:</label>
-        <input type="text" name="plot">
-        <br>
-        <label for="cast">Cast:</label>
-        <select name="cast" multiple="true">
-            {{#each this.celebrities}}
-                <option value="{{this._id}}">{{this.name}}</option>
-            {{/each}}
-        </select>
-        <button>Create</button>
-    </form>
+<div class="container mt-5">
+  <h1 class="text-center">Create Movie</h1>
+  <form class="mb-3" action="/movies/create" method="post">
+    <div class="mb-3">
+      <label class="form-label" for="title">Titulo:</label>
+      <input class="form-control" type="text" name="title" />
+
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="genre">Genero:</label>
+      <input class="form-control" type="text" name="genre" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="plot">Trama:</label>
+      <input class="form-control" type="text" name="plot" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="cast">Cast:</label>
+      <select class="form-select" name="cast" multiple="true">
+        {{#each this.celebrities}}
+          <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+
+    </div>
+    <button class="btn btn-success btn-lg">Create</button>
+  </form>
 </div>

@@ -1,13 +1,12 @@
-<div>
-    <h1>List of Movies</h1>
-
+<div class="mt-5">
+    <h1 class="text-center">List of Movies</h1>
     <div>
-        <ul>
-             {{#each this.movies}}
-        <li>
-            <a href="/movies/{{this._id}}">Title: {{this.title}}</a>   
-        </li>
-        {{/each}}
+        <ul class="list-group">    
+            {{#each this.movies}}
+                <li class="list-group-item">
+                    <a href="/movies/{{this._id}}">Title: {{this.title}}</a>   
+                </li>
+            {{/each}}
         </ul>
     </div>
 </div>
