@@ -1,0 +1,17 @@
+<div>
+
+  <ul>
+
+    <h3>{{this.celebrity.name}}</h3>
+
+    <p><b>Ocupacion: </b>{{this.celebrity.occupation}}</p>
+    <p><b>Frase Distintiva: </b>{{this.celebrity.catchPhrase}}</p>
+    <a href="/celebrities/{{this.celebrity._id}}/edit-celebrity"><button
+      >Update</button></a>
+    <form action="/celebrities/{{celebrity._id}}" method="post">
+      <button>Delete</button>
+    </form>
+
+  </ul>
+
+</div>

@@ -1,8 +1,12 @@
-<div>
+<div class="celebrities-container">
+
   <h2>List of celebrities</h2>
-  <ul>
+
+  <div class="celebrities-list">
     {{#each this.allCelebrities}}
-      <li>{{this.name}}</li>
+      <a href="/celebrities/{{this._id}}/celebrity-details"><h4
+        >{{this.name}}</h4></a>
     {{/each}}
-  </ul>
+  </div>
+
 </div>
